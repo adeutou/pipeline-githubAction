@@ -9,7 +9,7 @@ public class HelloWorldTest {
 
     private HelloWorld hello = new HelloWorld();
 
-    @test
+    @Test
     public void helloSaysHello(){
         assertThat(hello.sayHello(), containsString("Hello"));
     }
