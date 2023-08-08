@@ -14,7 +14,7 @@
 #CMD ["java", "-jar", "app.jar"]
 
 # Use a base image with Java runtime
-FROM openjdk:17-jre-slim
+FROM ubuntu:latest
 
 # Set the working directory inside the container
 WORKDIR /app
