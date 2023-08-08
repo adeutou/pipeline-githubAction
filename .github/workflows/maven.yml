@@ -45,7 +45,7 @@ jobs:
     needs: publish-job
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Build and push Docker image
         run: |
           docker build -f Dockerfile -t adeutou/pipeline-github-action-image:latest .
