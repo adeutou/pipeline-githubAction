@@ -14,7 +14,7 @@
 #CMD ["java", "-jar", "app.jar"]
 
 # Use a base image with Java runtime
-FROM adoptopenjdk:17-jre-hotspot
+FROM openjdk:17-jre-slim
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -27,3 +27,4 @@ EXPOSE 8080
 
 # Run the Java application
 CMD ["java", "-jar", "app.jar"]
+
