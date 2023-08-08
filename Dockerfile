@@ -5,7 +5,7 @@ LABEL authors="adeut"
 #ENTRYPOINT ["java", ".jar", "pipeline-github-action-image.jar"]
 
 # Use a base image with Java runtime
-FROM adoptopenjdk:17-jre-hotspot
+#FROM adoptopenjdk:17-jre-hotspot
 
 # Copy the JAR file from the staging directory
 COPY staging/*.jar app.jar
