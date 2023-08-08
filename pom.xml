@@ -32,4 +32,8 @@
         <!-- end::junit[] -->
     </dependencies>
 
+    <build>
+        <finalName>pipeline-github-action-image</finalName>
+    </build>
+
 </project>
