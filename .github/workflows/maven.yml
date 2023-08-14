@@ -79,7 +79,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./Package.zip  # Specify the path to your release asset
+          asset_path: ./path/to/release/asset.ext  # Specify the path to your release asset
           asset_name: Package${{ github.run_number }}  # Specify the name for the release asset
           asset_content_type: application/zip
 
