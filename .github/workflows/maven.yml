@@ -36,7 +36,7 @@ jobs:
     - run: mkdir staging && cp target/*.jar staging
     - uses: actions/upload-artifact@v3
       with:
-        name: Package
+        name: Package.zip
         path: staging
 
   build-docker-image:
@@ -81,7 +81,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./staging/Package # Specify the path to your release asset
+          asset_path: ./staging/Package.zip # Specify the path to your release asset
           asset_name: Package.zip   # Specify the name for the release asset
           asset_content_type: application/java-archive
 
