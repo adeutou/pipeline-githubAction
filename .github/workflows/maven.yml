@@ -41,13 +41,13 @@ jobs:
       - name: Release Creation and Upload
         uses: actions/github-release@v3
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: v${{ env.BUILD_NUMBER }}
-          release_name: Release ${{ env.BUILD_NUMBER }}
-          body: This is a release of the project.
-          artifacts: |
-            staging/
+            tag_name: v${{ env.BUILD_NUMBER }}
+            release_name: Release ${{ env.BUILD_NUMBER }}
+            body: This is a release of the project.
+            artifacts: |
+              staging/
 
   build-docker-image:
     name: Build and Push Docker Image
