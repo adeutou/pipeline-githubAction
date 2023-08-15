@@ -86,7 +86,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Debug - List Staging Directory
-        run: ls -R ./staging/
+        run: ls -R ${{ github.workspace }}/staging
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
