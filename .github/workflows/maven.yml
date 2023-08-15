@@ -86,7 +86,7 @@ jobs:
           draft: false
           prerelease: false
       - name: Debug - List Staging Directory
-        run: ls -R ${{ env.staging_dir }}/
+        run: ls -R ./target
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
