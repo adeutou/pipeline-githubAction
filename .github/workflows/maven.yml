@@ -38,8 +38,8 @@ jobs:
       with:
         name: Package.zip
         path: staging
-    - name: Debugging - List Staging Directory
-      run: ls -R ./staging
+#    - name: Debugging - List Staging Directory
+#      run: ls -R ./staging
 
   build-docker-image:
     name: Build and Push Docker Image
@@ -56,7 +56,7 @@ jobs:
 
   automate-release:
     name: Automate GitHub Release
-    needs: [build-docker-image]  # Specify the jobs that need to be completed before this job starts
+    needs: publish-job  # Specify the jobs that need to be completed before this job starts
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
