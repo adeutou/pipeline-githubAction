@@ -69,7 +69,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           tag_name: ${{ github.run_number }}  # Specify the desired tag for the release
           release_name: Release ${{ github.run_number }} # Specify the release name
@@ -81,8 +81,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./staging/pipeline-github-action-image.jar # Specify the path to your release asset
-          asset_name: pipeline-github-action-image.jar   # Specify the name for the release asset
+          asset_path: ./Package.zip # Specify the path to your release asset
+          asset_name: Package.zip   # Specify the name for the release asset
           asset_content_type: application/java-archive
 
 
