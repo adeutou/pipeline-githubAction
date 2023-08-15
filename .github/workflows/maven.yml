@@ -51,7 +51,10 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Package.zip
-          path: ${{ env.staging_dir }}
+          path: ${{ env.staging_dir }}  # Utilise le chemin du répertoire "staging" stocké dans la variable d'environnement
+          if-no-files-found: warn
+        env:
+          JAVA_HOME: /opt/hostedtoolcache/Java_Temurin-Hotspot_jdk/17.0.8-7/x64
 
   build-docker-image:
     name: Build and Push Docker Image
