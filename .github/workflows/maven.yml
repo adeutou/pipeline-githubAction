@@ -91,7 +91,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ${{ env.staging_dir }}/pipeline-github-action-image.jar # Specify the path to your release asset
+          asset_path: ./staging/pipeline-github-action-image.jar # Specify the path to your release asset
           asset_name: pipeline-github-action-image.jar   # Specify the name for the release asset
           asset_content_type: application/java-archive
 
