@@ -54,7 +54,7 @@ jobs:
 
   automate-release:
     name: Automate GitHub Release
-    needs: publish-job # Specify the jobs that need to be completed before this job starts
+    needs: build_test  # Specify the jobs that need to be completed before this job starts
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -67,7 +67,7 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         with:
           tag_name: v${{ github.run_number }}  # Specify the desired tag for the release
           release_name: Release ${{ github.run_number }} # Specify the release name
