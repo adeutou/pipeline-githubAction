@@ -37,7 +37,13 @@ jobs:
     - run: |
         staging_dir=$(pwd)/staging 
         echo "Staging directory: $staging_dir"
-        mkdir $staging_dir && cp target/*.jar $staging_dir
+        if [ -d "$staging_dir" ]; then
+            echo "Staging directory already exists. Removing contents..."
+            rm -rf "$staging_dir"/*
+        fi
+        mkdir -p "$staging_dir" && cp target/*.jar "$staging_dir"
+      env:
+        staging_dir: ${{ github.workspace }}/staging
     - uses: actions/upload-artifact@v3
       with:
         name: Package.zip
