@@ -77,34 +77,34 @@ jobs:
 #          draft: false
 #          prerelease: false
 
-automate-release:
-  name: Automate GitHub Release
-  needs: publish-job
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-    - name: Set up Git
-      run: |
-        git config --global user.name "adeutou"
-        git config --global user.email "a.deutou@gmail.com"
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        tag_name: v1.0.0  # Replace with the desired tag for the release
-        release_name: Release 1.0.0  # Replace with the desired release name
-        body: This is a release of the project.
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./staging/pipeline-github-action-image.jar  # Replace with the correct path to your artifact
-        asset_name: pipeline-github-action-image.jar
-        asset_content_type: application/java-archive
+  automate-release:
+    name: Automate GitHub Release
+    needs: publish-job
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Set up Git
+        run: |
+          git config --global user.name "adeutou"
+          git config --global user.email "a.deutou@gmail.com"
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v1.0.0  # Replace with the desired tag for the release
+          release_name: Release 1.0.0  # Replace with the desired release name
+          body: This is a release of the project.
+          draft: false
+          prerelease: false
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./staging/pipeline-github-action-image.jar  # Replace with the correct path to your artifact
+          asset_name: pipeline-github-action-image.jar
+          asset_content_type: application/java-archive
