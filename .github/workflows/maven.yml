@@ -39,22 +39,9 @@ jobs:
           name: Package
           path: staging
 
-  build-docker-image:
-    name: Build and Push Docker Image
-    runs-on: ubuntu-latest
-    needs: publish-job
-
-    steps:
-      - uses: actions/checkout@v3
-      - name: Build and push Docker image
-        run: |
-          docker build -f Dockerfile -t adeutou/pipeline-github-action-image:latest .
-          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
-          docker push adeutou/pipeline-github-action-image:latest
-
   automate-release:
     name: Automate GitHub Release
-    needs: build_test  # Specify the jobs that need to be completed before this job starts
+    needs: publish-job  # Specify the jobs that need to be completed before this job starts
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -73,6 +60,19 @@ jobs:
           release_name: Release ${{ github.run_number }} # Specify the release name
           body: This is a release of the project.
           artifacts: |
-              staging/
+            staging/
           draft: false
           prerelease: false
+
+  build-docker-image:
+    name: Build and Push Docker Image
+    runs-on: ubuntu-latest
+    needs: publish-job
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Build and push Docker image
+        run: |
+          docker build -f Dockerfile -t adeutou/pipeline-github-action-image:latest .
+          docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
+          docker push adeutou/pipeline-github-action-image:latest
