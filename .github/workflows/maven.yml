@@ -56,7 +56,7 @@ jobs:
 
   automate-release:
     name: Automate GitHub Release
-    needs: publish-job  # Specify the jobs that need to be completed before this job starts
+    needs: build_test  # Specify the jobs that need to be completed before this job starts
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
