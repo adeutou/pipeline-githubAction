@@ -46,10 +46,10 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Set up Git
-        run: |
-          git config --global user.name "adeutou"
-          git config --global user.email "a.deutou@gmail.com"
+#      - name: Set up Git
+#        run: |
+#          git config --global user.name "adeutou"
+#          git config --global user.email "a.deutou@gmail.com"
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
