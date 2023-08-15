@@ -85,6 +85,8 @@ jobs:
           release_name: Release ${{ github.run_number }} # Specify the release name
           draft: false
           prerelease: false
+      - name: Debug - List Staging Directory
+        run: ls -R ./staging/
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
