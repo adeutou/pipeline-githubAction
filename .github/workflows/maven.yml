@@ -47,7 +47,7 @@ jobs:
     - uses: actions/upload-artifact@v3
       with:
         name: Package.zip
-        path: ${{ env.staging_dir }}
+        path: ./staging
 #    - name: Debugging - List Staging Directory
 #      run: ls -R ./staging
 
