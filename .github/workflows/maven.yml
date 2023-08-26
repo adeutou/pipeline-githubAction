@@ -63,7 +63,7 @@ jobs:
   automate-release:
     name: Automate Github Release
     runs-on: ubuntu-latest
-    needs: build_test
+    needs: publish-job
     steps:
       - name: Download artifact
         uses: actions/download-artifact@v3
